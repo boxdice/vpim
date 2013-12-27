@@ -1,10 +1,11 @@
-require 'test/common'
+# -*- encoding : utf-8 -*-
+require File.expand_path('../common', __FILE__)
 
 require 'vpim/agent/atomize'
 require 'vpim/icalendar'
 require 'vpim/view'
 
-class TextAgentAtomize < Test::Unit::TestCase
+class TestAgentAtomize < Test::Unit::TestCase
 
   def atomize(cal, feeduri, caluri, filter=nil)
     ical = Vpim::Icalendar.decode(cal).first

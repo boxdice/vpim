@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 =begin
   Copyright (C) 2008 Sam Roberts
 
@@ -94,7 +95,7 @@ module Vpim
         f.push Field.create('END', p)
         fields = f
       end
-      
+
       new(fields, profile)
     end
 
@@ -157,7 +158,7 @@ module Vpim
     # Examples:
     #
     # Print all the nicknames in a card:
-    #  
+    #
     #   card.enum_by_name('NICKNAME') { |f| puts f.value }
     #
     # Print an Array of the preferred email addresses in the card:
@@ -178,7 +179,7 @@ module Vpim
     #   end
     #
     # or to get an array of all the fields in group 'AGROUP', you could do:
-    # 
+    #
     #   card.enum_by_group('AGROUP').to_a
     def enum_by_group(group)
       Enumerator.new(self, Proc.new { |field| field.group?(group) })
@@ -250,7 +251,7 @@ module Vpim
     alias to_s encode
 
     # Check that the DirectoryInfo object is correctly delimited by a BEGIN
-    # and END, that their profile values match, and if +profile+ is specified, that 
+    # and END, that their profile values match, and if +profile+ is specified, that
     # they are the specified profile.
     def check_begin_end(profile=nil) #:nodoc:
       unless @fields.first

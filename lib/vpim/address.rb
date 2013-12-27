@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 =begin
   Copyright (C) 2008 Sam Roberts
 
@@ -139,7 +140,7 @@ module Vpim
         if partstat
           adr.partstat = partstat.first.strip.upcase
         end
-        
+
         rsvp = field.param('RSVP')
 
         if rsvp
@@ -163,7 +164,7 @@ module Vpim
         value = uri.to_str.strip
 
         if value.empty?
-          raise Uencodeable, "Address#uri is zero-length"
+          raise Unencodeable, "Address#uri is zero-length"
         end
 
         params = {}

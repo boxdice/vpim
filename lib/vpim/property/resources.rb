@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 =begin
   Copyright (C) 2008 Sam Roberts
 
@@ -20,5 +21,3 @@ module Vpim
     end
   end
 end
-
-

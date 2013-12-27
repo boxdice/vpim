@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 =begin
   Copyright (C) 2008 Sam Roberts
 
@@ -50,7 +51,7 @@ module Vpim
         if group
           line << group << '.'
         end
-        
+
         line << name
 
         params.each do |pname, pvalues|
@@ -141,7 +142,7 @@ module Vpim
             # v2.1 params have no '=' sign, figure out what kind of param it
             # is (either its a known encoding, or we treat it as a 'TYPE'
             # param).
-           
+
             if $2 == ""
               params = $1
               case $1

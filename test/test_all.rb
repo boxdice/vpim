@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 #!/usr/bin/env ruby
 
 require 'pp'
@@ -5,6 +6,7 @@ require 'pp'
 $-w = true
 
 $:.unshift File.dirname(__FILE__) + "/../lib"
+$:.unshift File.dirname(__FILE__) + "/.."
 
 
 #pp [__LINE__, $:, $"]

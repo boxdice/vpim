@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 =begin
   Copyright (C) 2008 Sam Roberts
 
@@ -29,9 +30,18 @@ module Vpim
           end
           prop
         end
-
       end
     end
+
+    # add a location property to (v)events. This is specified in the RFC 2445
+    module Set
+      module Location
+        def location(value)
+          set_text 'LOCATION', value
+        end
+      end
+    end
+
   end
 end
 

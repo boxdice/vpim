@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 =begin
   Copyright (C) 2008 Sam Roberts
 
@@ -65,20 +66,20 @@ module Vpim
 
        # Freq is mandatory, but must occur only once.
        @freq = nil
-   
+
        # Both Until and Count must not occur, neither is OK.
        @until = nil
        @count = nil
-   
+
        # Interval is optional, but defaults to 1.
        @interval = 1
 
        # WKST defines what day a week begins on, the default is monday.
        @wkst = 'MO'
-   
+
        # Recurrence can modified by these.
        @by = {}
-  
+
        if @rrule
          @rrule.scan(/([^;=]+)=([^;=]+)/) do |key,value|
            key.upcase!
@@ -256,10 +257,10 @@ module Vpim
         end
 
         # TODO - BYHOUR, BYMINUTE, BYSECOND
-        
-        hour   = [@dtstart.hour]   if !hour 
-        min    = [@dtstart.min]    if !min  
-        sec    = [@dtstart.sec]    if !sec 
+
+        hour   = [@dtstart.hour]   if !hour
+        min    = [@dtstart.min]    if !min
+        sec    = [@dtstart.sec]    if !sec
 
   #      debug days
 

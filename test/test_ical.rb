@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 #!/usr/bin/env ruby
 
 require 'vpim/icalendar'
@@ -170,7 +171,7 @@ ___
     # Hal was encoding raw strings, here's how to do it with the API.
 
     cal = Icalendar.create
-    
+
     start = Time.now
 
     event = Icalendar::Vevent.create(start,
@@ -329,7 +330,7 @@ __
     assert_equal(1, vc.events.to_a.size)
     assert_equal(1, vc.todos.to_a.size)
     assert_equal(1, vc.journals.to_a.size)
-    
+
     vc.to_s # Shouldn't raise...
     # TODO - encode isn't round-tripping, unknown components are lost, which is
     # not good.
@@ -419,6 +420,15 @@ __
     assert_equal(cal.events.first.location, "bien located")
     assert_equal(cal.todos.first.location, "")
     assert_equal(cal.events.last.location, nil)
+  end
+
+  def test_set_location
+    vc = Icalendar.create2 do |vc|
+      vc.add_event do |m|
+        m.location("bien located")
+      end
+    end
+    assert_match(/LOCATION:bien located/, vc.to_s)
   end
 
 

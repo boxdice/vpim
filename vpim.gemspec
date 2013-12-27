@@ -11,7 +11,7 @@ This is a pure-ruby library for decoding and encoding vCard and iCalendar data
 ("personal information") called vPim.
 ---
   s.has_rdoc          = true
-  s.extra_rdoc_files  = ["README", "CHANGES", "COPYING", "samples/README.mutt" ]
+  s.extra_rdoc_files  = ["README.rdoc", "CHANGES", "COPYING", "samples/README.mutt" ]
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")

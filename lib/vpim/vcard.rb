@@ -1,3 +1,4 @@
+# -*- encoding : binary -*-
 =begin
   Copyright (C) 2008 Sam Roberts
 
@@ -26,7 +27,7 @@ module Vpim
   # All line values can be accessed with Vcard#value, Vcard#values, or even by
   # iterating through Vcard#lines. Line types that don't have specific support
   # and non-standard line types ("X-MY-SPECIAL", for example) will be returned
-  # as a String, with any base64 or quoted-printable encoding removed. 
+  # as a String, with any base64 or quoted-printable encoding removed.
   #
   # Specific support exists to return more useful values for the standard vCard
   # types, where appropriate.
@@ -272,7 +273,7 @@ module Vpim
     end
 
     # Represents the value of a TEL field.
-    # 
+    #
     # The value is supposed to be a "X.500 Telephone Number" according to RFC
     # 2426, but that standard is not freely available. Otherwise, anything that
     # looks like a phone number should be OK.
@@ -669,6 +670,8 @@ module Vpim
         raise ArgumentError, "Vcard.decode cannot be called with a #{card.type}"
       end
 
+      string.force_encoding "BINARY"
+
       case string
         when /^\xEF\xBB\xBF/
           string = string.sub("\xEF\xBB\xBF", '')
@@ -685,6 +688,8 @@ module Vpim
         when /^B\x00/i
           string = string.unpack('v*').pack('U*')
       end
+
+      string.force_encoding "utf-8"
 
       entities = Vpim.expand(Vpim.decode(string))
 
@@ -1381,7 +1386,7 @@ module Vpim
       # Copy the fields from +card+ into self using #add_field. If a block is
       # provided, each Field from +card+ is yielded. The block should return a
       # Field to add, or nil.  The Field doesn't have to be the one yielded,
-      # allowing the field to be copied and modified (see Field#copy) before adding, or 
+      # allowing the field to be copied and modified (see Field#copy) before adding, or
       # not added at all if the block yields nil.
       #
       # The vCard fields BEGIN and END aren't copied, and VERSION, N, and FN are copied

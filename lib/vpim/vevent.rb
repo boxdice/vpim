@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 =begin
   Copyright (C) 2008 Sam Roberts
 
@@ -103,7 +104,7 @@ module Vpim
 
           # put invitee in as field[1]
           fields << invitee.encode('ATTENDEE') if i == 1
-          
+
           fields << f unless f.name? 'ATTENDEE'
         end
 
@@ -135,6 +136,7 @@ module Vpim
       class Maker
         include Vpim::Icalendar::Set::Util #:nodoc:
         include Vpim::Icalendar::Set::Common
+        include Vpim::Icalendar::Set::Location
 
         # The event that changes are being made to.
         attr_reader :event
